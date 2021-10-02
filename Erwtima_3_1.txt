@@ -29,3 +29,17 @@
 Μόνο αν κάνουμε με μια στήλη group by καλώ την uniq που σβήνει όσες γραμμές έχουν ίδια data
 Μετά πάω και φτιάχνω τις γραμμές του καινούριου table βάζω σειρά σειρά τα data του πίνακα αλλά με την σειρά που έγινε sorted η στήλη με την οποια ήθελε
 να κάνουμε group by και μετά απλά φτιάχνω ένα πίνακα με το όνομα τις στήλες που είχε κάνει select και των τύπο τους, βάζω γραμμή γραμμή τα data και το επιστρέφω
+
+Αυτο ειναι το τραπεζι που χρησιμοποιουσα
+db.insert('classroom', ['Packard', '101', '500'])
+db.insert('classroom', ['Painter', '514', '10'])
+db.insert('classroom', ['Taylor', '3128', '70'])
+db.insert('classroom', ['Watson', '120', '50'])
+db.insert('classroom', ['Watson', '100', '30'])
+db.insert('classroom', ['Watson', '120', '50'])
+db.insert('classroom', ['Watson', '120', '50'])
+db.insert('classroom', ['Batson', '120', '50'])
+
+db.classroom.group_by(['building', 'room_number'], ['room_number', 'building'], asc=True).show()
+
+db.classroom.select_distinct('room_number', asc=True).show()
